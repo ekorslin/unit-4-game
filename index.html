@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>CrystalsCollector!</h1>
+        <p>You will be given a random number at the start of the game.</p>
+        <p>There are four crystals below.  By clicking on a crystal, you will add a specific amount of points to your score.</p>
+        <p>You win the game by matching your total score to the random number, you lose the game if your total score goes above the random number.</p>
+        <p>The value of each crystal is hidden from you until you click on it.</p>
+        <p>Each time when the game starts, the game will change the values of each crystal.</p>
+    <h2 class="random"></h2>
+        <img class="diamond" src="assets/images/diamond.png" style="width:75px;height:64px;">
+        <img class="emerald" src="assets/images/emerald.jpg" style="width:75px;height:64px;">
+        <img class="ruby" src="assets/images/ruby.jpg" style="width:75px;height:64px;">
+        <img class="onyx" src="assets/images/onyx.jpg" style="width:75px;height:64px;">
+    <h3 class="wins">Wins:</h3>
+    <h3 class="losses">Losses:</h3>
+    <h3>Your Total Score Is:</h3>
+    <h3 class="score"></h3>
+<script> 
+var score = 0;
+var wins = 1;
+var losses = 1;
+   reset (); 
+   function post() {
+        $(".score").text(score += diamondValue);
+            if (score === randomNo) {
+            alert("You win!");
+            reset();
+            $(".wins").text("Wins: "+ wins++);
+            }
+            else if (score >= randomNo) {
+            alert("You lose!!");
+            reset ();
+            $(".losses").text("Losses: " + losses++);
+    }
+    }
+    function postEmerald() {
+        $(".score").text(score += emeraldValue);
+        if (score === randomNo) {
+            alert("You win!");
+            $(".wins").text("Wins: "+ wins ++);
+            reset();
+            }
+            else if (score >= randomNo) {
+            alert("You lose!!");
+            $(".losses").text("Losses: " + losses ++);
+            reset ();
+    }
+    }
+    function postRuby() {
+        $(".score").text(score += rubyValue);
+        if (score === randomNo) {
+            alert("You win!");
+            $(".wins").text("Wins: "+ wins ++);
+            reset();
+            }
+            else if (score >= randomNo) {
+            alert("You lose!!");
+            $(".losses").text("Losses: " + losses ++);
+            reset ();
+    }
+    }
+    function postOnyx() {
+        $(".score").text(score += onyxValue);
+        if (score === randomNo) {
+            alert("You win!");
+            $(".wins").text("Wins: "+ wins ++);
+            reset();
+            }
+            else if (score >= randomNo) {
+            alert("You lose!!");
+            $(".losses").text("Losses: " + losses ++);
+            reset ();
+    }
+    }
+    function randomCrystalValue(min,max) {
+        return Math.floor(Math.random()*(max-min+1)+min);
+    }
+    function randomValue(min,max) {
+        return Math.floor(Math.random()*(max-min+1)+min);
+    }
+    function reset () {
+        minNumber = 19;
+        maxNumber = 120;
+        score = 0;
+        randomNo = randomValue(minNumber, maxNumber);
+            $(".random").text(randomNo);
+            $(".score").text(score);
+    }
+    var crystalMin = 1;
+    var crystalMax = 12;
+
+    var diamondValue = randomCrystalValue(crystalMin, crystalMax);
+        $(".diamond").on("click", post)
+    var emeraldValue = randomCrystalValue(crystalMin, crystalMax);
+        $(".emerald").on("click", postEmerald);     
+    var rubyValue = randomCrystalValue(crystalMin, crystalMax);
+        $(".ruby").on("click", postRuby); 
+    var onyxValue = randomCrystalValue(crystalMin, crystalMax);
+        $(".onyx").on("click", postOnyx);  
+    
+    if (score === randomNo) {
+      alert("You win!");
+    }
+    else if (score >= randomNo) {
+      alert("You lose!!");
+    }
+
+
+
+</script>    
+</body>
+</html>
